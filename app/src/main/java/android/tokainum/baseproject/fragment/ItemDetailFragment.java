@@ -1,14 +1,24 @@
-package android.tokainum.baseproject;
+package android.tokainum.baseproject.fragment;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.tokainum.baseproject.R;
+import android.tokainum.baseproject.activity.ItemDetailActivity;
+import android.tokainum.baseproject.activity.ItemListActivity;
+import android.tokainum.baseproject.model.CoffeeMaker;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.tokainum.baseproject.dummy.DummyContent;
+
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjection;
+import dagger.android.support.AndroidSupportInjection;
 
 /**
  * A fragment representing a single Item detail screen.
@@ -16,7 +26,7 @@ import android.tokainum.baseproject.dummy.DummyContent;
  * in two-pane mode (on tablets) or a {@link ItemDetailActivity}
  * on handsets.
  */
-public class ItemDetailFragment extends Fragment {
+public class ItemDetailFragment extends BaseFragment {
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -28,6 +38,9 @@ public class ItemDetailFragment extends Fragment {
      */
     private DummyContent.DummyItem mItem;
 
+    @Inject
+    CoffeeMaker maker;
+
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
@@ -37,8 +50,8 @@ public class ItemDetailFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        AndroidSupportInjection.inject(this);
         super.onCreate(savedInstanceState);
-
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
@@ -51,6 +64,7 @@ public class ItemDetailFragment extends Fragment {
                 appBarLayout.setTitle(mItem.content);
             }
         }
+        Log.d("Test", Integer.toString(this.maker.heater.getHeat()));
     }
 
     @Override
