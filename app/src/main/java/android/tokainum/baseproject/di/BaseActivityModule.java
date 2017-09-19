@@ -1,10 +1,8 @@
 package android.tokainum.baseproject.di;
 
+import android.tokainum.baseproject.activity.BaseActivity;
 import android.tokainum.baseproject.activity.ItemDetailActivity;
 import android.tokainum.baseproject.activity.ItemListActivity;
-import android.tokainum.baseproject.fragment.ItemDetailFragment;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -14,7 +12,13 @@ import dagger.android.ContributesAndroidInjector;
  */
 
 @Module
-public abstract class ItemDetailActivityModule {
+public abstract class BaseActivityModule {
+
+    @ContributesAndroidInjector()
+    abstract BaseActivity contributeBaseActivityInjector();
+
+    @ContributesAndroidInjector()
+    abstract ItemListActivity contributeItemListActivityInjector();
 
     @ContributesAndroidInjector()
     abstract ItemDetailActivity contributeItemDetailActivityInjector();

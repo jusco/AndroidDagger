@@ -15,7 +15,7 @@ import dagger.Provides;
  */
 
 @Module
-public class DripCoffeeModule {
+public class BaseApplicationModule {
 
     @Singleton
     @Provides

@@ -1,7 +1,6 @@
 package android.tokainum.baseproject.di;
 
 import android.tokainum.baseproject.application.BaseApplication;
-import android.tokainum.baseproject.fragment.BaseFragment;
 import android.tokainum.baseproject.model.CoffeeMaker;
 
 import javax.inject.Singleton;
@@ -14,8 +13,8 @@ import dagger.android.AndroidInjectionModule;
  */
 
 @Singleton
-@Component(modules = {AndroidInjectionModule.class, DripCoffeeModule.class,ItemListActivityModule.class, ItemDetailActivityModule.class, ItemDetailFragmentModule.class})
-public interface CoffeeShop {
+@Component(modules = {AndroidInjectionModule.class, BaseApplicationModule.class, BaseActivityModule.class, BaseFragmentModule.class})
+public interface BaseApplicationComponent {
     CoffeeMaker maker();
     void inject(BaseApplication application);
 }

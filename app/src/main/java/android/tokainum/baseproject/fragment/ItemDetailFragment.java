@@ -50,7 +50,6 @@ public class ItemDetailFragment extends BaseFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        AndroidSupportInjection.inject(this);
         super.onCreate(savedInstanceState);
         if (getArguments().containsKey(ARG_ITEM_ID)) {
             // Load the dummy content specified by the fragment

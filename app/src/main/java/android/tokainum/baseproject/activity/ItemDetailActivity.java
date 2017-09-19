@@ -27,14 +27,10 @@ import dagger.android.support.HasSupportFragmentInjector;
  * item details are presented side-by-side with a list of items
  * in a {@link ItemListActivity}.
  */
-public class ItemDetailActivity extends BaseActivity implements HasSupportFragmentInjector {
-
-    @Inject
-    DispatchingAndroidInjector<Fragment> fragmentInjector;
+public class ItemDetailActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        configureInjection();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
@@ -93,14 +89,6 @@ public class ItemDetailActivity extends BaseActivity implements HasSupportFragme
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void configureInjection() {
-        AndroidInjection.inject(this);
-    }
-
-    public AndroidInjector<Fragment> supportFragmentInjector() {
-        return fragmentInjector;
     }
 
 }
